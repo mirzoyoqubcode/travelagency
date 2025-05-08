@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT US",
+    "packages": "TOUR PACKAGES",
+    "services": "OUR SERVICES",
+    "gallery": "GALLERY",
+    "contact": "CONTACT"
+  }
+}
