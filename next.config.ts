@@ -1,7 +1,19 @@
-import { NextConfig } from "next";
+// next.config.ts
+
 import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig: NextConfig = {};
+// (1) if you want strong typing:
+import type { NextConfig } from "next";
 
-const withNextIntl = createNextIntlPlugin();
+const nextConfig: NextConfig = {
+  // ✅ regular Next.js options
+  images: { domains: ["images.unsplash.com", "randomuser.me"] }, // ← example for external images
+};
+
+const withNextIntl = createNextIntlPlugin({
+  // ✅ your i18n options here
+  // defaultLocale: "en",
+  // locales: ["en", "ru", "uz"],
+});
+
 export default withNextIntl(nextConfig);

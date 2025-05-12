@@ -1,12 +1,12 @@
-// src/components/Header.tsx
+// components/Header.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { PhoneOutlined, MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { AnimatePresence, motion } from "framer-motion";
 import LangSwitcher from "@/components/LanguageSwitcher";
 
 interface NavItem {
@@ -23,64 +23,67 @@ const NAV_ITEMS: NavItem[] = [
   { key: "contact", href: "/#contact" },
 ];
 
-export default function Header() {
+const Header: React.FC = () => {
   const t = useTranslations("nav");
-  const locale = useLocale();
+  const locale = useLocale()!;
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
   const [hash, setHash] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Rebuild the full current path + query + hash
   const queryString = searchParams.toString()
     ? `?${searchParams.toString()}`
     : "";
+  const currentPath = `${pathname}${queryString}${hash}`;
 
+  // Sync hash changes
   useEffect(() => {
-    setHash(window.location.hash || "");
-    const onHashChange = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
+    const updateHash = () => setHash(window.location.hash);
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
   }, []);
 
-  const currentAsPath = `${pathname}${queryString}${hash}`;
+  const toggleMobile = useCallback(() => {
+    setMobileOpen((open) => !open);
+  }, []);
+
+  const closeMobile = useCallback(() => {
+    setMobileOpen(false);
+  }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 bg-white/90 backdrop-blur-md shadow-md z-30">
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+    <header className="fixed  inset-x-0 top-0 z-50 bg-white/70 backdrop-blur-md shadow-lg">
+      <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="Logo" width={128} height={34} priority />
-          <span className="ml-3 text-2xl font-extrabold text-[#FA7436] tracking-tight">
-            TRAVEL AGENTS
+        <Link href="/" className="flex items-center space-x-1">
+          <span className="text-3xl font-extrabold tracking-tight text-[#222222]">
+            MirStar
+          </span>
+          <span className="text-3xl font-extrabold tracking-tight text-[#FA7436]">
+            Travel
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav aria-label="Primary" className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 gap-4">
           {NAV_ITEMS.map(({ key, href }) => {
             const isActive =
-              currentAsPath === href || currentAsPath.startsWith(href + "/");
+              currentPath === href || currentPath.startsWith(href + "/");
             return (
               <Link
                 key={key}
                 href={href}
-                className={`
-                  relative px-1 py-2 text-sm font-medium transition-colors
-                  ${
-                    isActive
-                      ? "text-[#FA7436]"
-                      : "text-[#222222] hover:text-[#FA7436]"
-                  }
-                `}
+                className="relative group px-1 py-2 font-medium text-[#222222] hover:text-[#FA7436] transition-colors"
               >
                 {t(key)}
-                {/* underline effect */}
+                {/* thick animated underline */}
                 <span
-                  className={`
-                    absolute inset-x-0 -bottom-1 h-0.5 bg-[#FA7436]
-                    transition-all duration-300
-                    ${isActive ? "w-full" : "w-0 group-hover:w-full"}
-                  `}
+                  className={`absolute left-0 -bottom-1 h-[1px] bg-[#FA7436]
+                    transition-[width] duration-300
+                    ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
                 />
               </Link>
             );
@@ -89,76 +92,75 @@ export default function Header() {
 
         {/* Right Controls */}
         <div className="flex items-center space-x-4">
-          <LangSwitcher locale={locale!} />
+          <LangSwitcher locale={locale} />
 
-          <div className="hidden sm:flex items-center space-x-2">
-            <PhoneOutlined className="text-[#FA7436] text-lg" />
-            <span className="text-[#222222] font-medium">+111 025 8211</span>
-          </div>
-
-          {/* Mobile Toggle */}
+          {/* Mobile toggle */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-md hover:bg-[#FEFCFB] focus:outline-none focus:ring-2 focus:ring-[#FA7436]"
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
+            onClick={toggleMobile}
+            className="md:hidden p-2 rounded-full bg-white hover:bg-gray-100 shadow focus:outline-none focus:ring-2 focus:ring-[#FA7436]"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? (
-              <CloseOutlined className="text-[#222222] text-2xl" />
+              <CloseOutlined className="text-2xl text-[#222222]" />
             ) : (
-              <MenuOutlined className="text-[#222222] text-2xl" />
+              <MenuOutlined className="text-2xl text-[#222222]" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Sidebar */}
-      {mobileOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-20">
-          <aside
-            className="absolute top-0 right-0 w-64 h-full bg-white p-6 flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+            onClick={closeMobile}
           >
-            <nav aria-label="Mobile" className="flex flex-col space-y-4">
-              {NAV_ITEMS.map(({ key, href }) => {
-                const isActive =
-                  currentAsPath === href ||
-                  currentAsPath.startsWith(href + "/");
-                return (
-                  <Link
-                    key={key}
-                    href={href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`
-                      px-2 py-2 text-base font-medium rounded-md transition-colors
-                      ${
-                        isActive
-                          ? "bg-[#FEFCFB] text-[#FA7436]"
-                          : "text-[#222222] hover:bg-[#F7F8FC]"
-                      }
-                    `}
-                  >
-                    {t(key)}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            <div className="mt-6">
-              <LangSwitcher locale={locale!} />
-            </div>
-
-            <div className="mt-auto pt-6 border-t border-gray-200">
-              <div className="flex items-center space-x-2">
-                <PhoneOutlined className="text-[#FA7436] text-lg" />
-                <span className="text-[#222222] font-medium">
-                  +111 025 8211
-                </span>
+            <motion.aside
+              key="panel"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.25 }}
+              className="absolute top-0 right-0 h-full w-72 bg-white shadow-xl p-6 flex flex-col"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            >
+              <nav className="mt-4 flex-1 flex flex-col space-y-4">
+                {NAV_ITEMS.map(({ key, href }) => {
+                  const isActive =
+                    currentPath === href || currentPath.startsWith(href + "/");
+                  return (
+                    <Link
+                      key={key}
+                      href={href}
+                      onClick={closeMobile}
+                      className={`
+                        block rounded-lg px-4 py-3 font-medium transition
+                        ${
+                          isActive
+                            ? "bg-[#FEFCFB] text-[#FA7436]"
+                            : "text-[#222222] hover:bg-[#F7F8FC]"
+                        }
+                      `}
+                    >
+                      {t(key)}
+                    </Link>
+                  );
+                })}
+              </nav>
+              <div className="pt-4 border-t border-gray-200">
+                <LangSwitcher locale={locale} />
               </div>
-            </div>
-          </aside>
-        </div>
-      )}
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
-}
+};
+
+export default React.memo(Header);
