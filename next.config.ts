@@ -7,7 +7,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // ✅ regular Next.js options
-  images: { domains: ["images.unsplash.com", "randomuser.me"] }, // ← example for external images
+  images: {
+    domains: [
+      "images.unsplash.com",
+      "source.unsplash.com",
+      "randomuser.me",
+      "picsum.photos",
+    ],
+  }, // ← example for external images
 };
 
 const withNextIntl = createNextIntlPlugin({

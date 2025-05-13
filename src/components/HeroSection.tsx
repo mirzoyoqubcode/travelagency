@@ -1,4 +1,7 @@
+// components/HeroSection.tsx
 "use client";
+
+import React from "react";
 import {
   FacebookFilled,
   TwitterOutlined,
@@ -8,15 +11,15 @@ import {
 export default function HeroSection() {
   return (
     <section className="relative isolate w-full h-screen overflow-hidden bottom-10">
-      {/* BG VIDEO */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        src="vdeo.mp4"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {/* BG YouTube Embed (autoplay, loop, muted) */}
+      <div className="absolute inset-0 -z-10">
+        <iframe
+          className="w-full h-full object-cover"
+          src="https://www.youtube.com/embed/KTcxTUWnLIw?autoplay=1&mute=1&loop=1&playlist=KTcxTUWnLIw&controls=0&modestbranding=1&showinfo=0"
+          title="Hero Background"
+          allow="autoplay; fullscreen"
+        />
+      </div>
       <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
 
       {/* HERO COPY */}
@@ -53,10 +56,7 @@ export default function HeroSection() {
               <a
                 key={i}
                 href="#"
-                className="
-                  text-white/90 transition-colors
-                  hover:text-[#FA7436] focus:text-[#FA7436] focus:outline-none
-                "
+                className="text-white/90 transition-colors hover:text-[#FA7436] focus:text-[#FA7436] focus:outline-none"
               >
                 <Icon className="text-xl" />
               </a>
