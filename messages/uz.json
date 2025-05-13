@@ -6,5 +6,25 @@
     "services": "XIZMATLAR",
     "gallery": "GALEREYA",
     "contact": "ALOQA"
+  },
+  "Services": {
+    "title": "Xizmatlarimiz",
+    "subtitle": "Sayohatingiz uchun barcha kerakli xizmatlar",
+    "flight": {
+      "title": "Aviachiptalar",
+      "desc": "Mahalliy va xalqaro reyslarga eng qulay narxlarda band qiling."
+    },
+    "accommodation": {
+      "title": "Turar joy",
+      "desc": "Saralangan mehmonxonalar, mehmon uylari va ijaralar."
+    },
+    "tour": {
+      "title": "Ekskursiyalar",
+      "desc": "Shahar sayrlari, sarguzasht yurishlar va madaniy dasturlar."
+    },
+    "payment": {
+      "title": "Xavfsiz to‘lov",
+      "desc": "Bir necha valyutada tez va himoyalangan to‘lov tizimi."
+    }
   }
 }

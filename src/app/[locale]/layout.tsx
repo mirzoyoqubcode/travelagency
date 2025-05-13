@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "../globals.css";
 import Header from "@/components/Header";
-
+import Footer from "@/components/Footer";
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
@@ -40,7 +40,8 @@ export default async function LocaleLayout({
       <body className="min-h-screen bg-gray-50 font-sans antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
-          <main className="flex flex-col min-h-screen">{children}</main>
+          <main>{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

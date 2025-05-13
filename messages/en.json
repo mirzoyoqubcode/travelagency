@@ -6,5 +6,25 @@
     "services": "OUR SERVICES",
     "gallery": "GALLERY",
     "contact": "CONTACT"
+  },
+  "Services": {
+    "title": "Our Services",
+    "subtitle": "Everything you need for a seamless journey",
+    "flight": {
+      "title": "Flight tickets",
+      "desc": "Book domestic and international flights at the best fares."
+    },
+    "accommodation": {
+      "title": "Accommodation",
+      "desc": "Hand-picked hotels, guesthouses and holiday rentals."
+    },
+    "tour": {
+      "title": "Guided tours",
+      "desc": "Curated city walks, adventure treks and cultural experiences."
+    },
+    "payment": {
+      "title": "Secure payments",
+      "desc": "Fast, protected checkout with multiple currency support."
+    }
   }
 }

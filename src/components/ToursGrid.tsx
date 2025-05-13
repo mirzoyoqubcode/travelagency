@@ -25,21 +25,7 @@ export default function ToursGrid() {
   );
 
   return (
-    <section className="mt-20 mb-24">
-      {/* dashed plane-trail graphic */}
-      <div className="mx-auto hidden h-40 w-full max-w-screen-xl md:block">
-        <svg
-          viewBox="0 0 1100 160"
-          fill="none"
-          stroke="#E5E5E5"
-          strokeDasharray="4 6"
-          className="h-full w-full"
-        >
-          <path d="M100 40 Q300 -20 500 40T900 40" />
-          <path d="M-50 90 Q250 150 550 90T1050 90" />
-        </svg>
-      </div>
-
+    <section className="my-4" id="packages">
       <div className="container mx-auto px-6">
         <h2 className="mb-12 text-center text-3xl sm:text-4xl font-extrabold text-[#222222]">
           The <span className="text-[#FA7436]">best place</span> for vacation

@@ -7,7 +7,7 @@ import { RightOutlined } from "@ant-design/icons";
 
 export default function AboutSection() {
   return (
-    <section className=" bg-[#F7F8FC] py-20">
+    <section className=" bg-[#F7F8FC] py-10" id="about">
       {/* decorative paper plane (desktop+) */}
 
       <div className="container mx-auto px-6 ">

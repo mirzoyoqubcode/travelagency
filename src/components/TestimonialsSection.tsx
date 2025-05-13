@@ -2,8 +2,11 @@
 "use client";
 
 import Image from "next/image";
-import { StarFilled, CommentOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { StarFilled } from "@ant-design/icons";
 
+/* ──────────────── Types ──────────────── */
 interface Review {
   id: number;
   text: string;
@@ -12,6 +15,7 @@ interface Review {
   rating: number;
 }
 
+/* ──────────────── Mock data ──────────────── */
 const reviews: Review[] = [
   {
     id: 1,
@@ -43,44 +47,61 @@ const reviews: Review[] = [
   },
 ];
 
-export default function TestimonialsSection() {
-  return (
-    <section className="bg-gradient-to-b from-[#FFF6F2] to-[#F7F8FC] py-24">
-      {/* dashed plane-trail under headline */}
-      <div className="mx-auto max-w-screen-md">
-        <svg
-          viewBox="0 0 800 40"
-          className="mx-auto mb-4 h-4 w-full text-[#FA7436]"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeDasharray="4 8"
-        >
-          <path d="M0 20 Q200 0 400 20T800 20" />
-        </svg>
-      </div>
+const ACCENT = "#FA7436";
 
-      <div className="container mx-auto px-6">
-        <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-[#222]">
-          Share&nbsp;
-          <span className="text-[#FA7436]">your journey</span>&nbsp;with others
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-center text-sm text-[#666]">
-          We’d love to hear how your trip went – your words inspire future
-          travellers.
-        </p>
+/* ──────────────── Section ──────────────── */
+export default function TestimonialsSection() {
+  // simple state for mobile carousel dot indicator
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  return (
+    <section className="py-24 lg:py-32 bg-white">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <header className="mb-16 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#222]">
+            Contact us to review&nbsp;
+            <span style={{ color: ACCENT }}>your experience</span>&nbsp;with us
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-[#666]">
+            Give us feedback and let us know what experiences you had while on
+            vacation with us.
+          </p>
+        </header>
 
         {/* ---------- DESKTOP GRID ---------- */}
-        <div className="mt-20 hidden gap-8 lg:grid lg:grid-cols-3">
-          {reviews.map((r) => (
-            <Card key={r.id} r={r} />
+        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
+          {reviews.map((r, i) => (
+            <TestimonialCard key={r.id} r={r} index={i} />
           ))}
         </div>
 
-        {/* ---------- MOBILE SCROLL-SNAP ---------- */}
-        <div className="mt-20 flex gap-6 overflow-x-auto snap-x snap-mandatory lg:hidden scroll-smooth">
-          {reviews.map((r) => (
-            <Card key={r.id} r={r} mobile />
+        {/* ---------- MOBILE HORIZONTAL SCROLL ---------- */}
+        <div
+          className="lg:hidden flex gap-6 overflow-x-auto snap-x snap-mandatory px-1"
+          onScroll={(e) => {
+            const el = e.currentTarget;
+            const idx = Math.round(
+              el.scrollLeft / (el.scrollWidth / reviews.length)
+            );
+            setActiveIdx(idx);
+          }}
+        >
+          {reviews.map((r, i) => (
+            <TestimonialCard key={r.id} r={r} index={i} mobile />
+          ))}
+        </div>
+
+        {/* mobile dots */}
+        <div className="lg:hidden flex justify-center gap-2 mt-6">
+          {reviews.map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 w-8 rounded-full transition-colors duration-300 ${
+                i === activeIdx ? "bg-[" + ACCENT + "]" : "bg-gray-300"
+              }`}
+              style={{ backgroundColor: i === activeIdx ? ACCENT : undefined }}
+            />
           ))}
         </div>
       </div>
@@ -89,49 +110,56 @@ export default function TestimonialsSection() {
 }
 
 /* ────────────────────── Card ────────────────────── */
-function Card({ r, mobile = false }: { r: Review; mobile?: boolean }) {
+function TestimonialCard({
+  r,
+  index,
+  mobile = false,
+}: {
+  r: Review;
+  index: number;
+  mobile?: boolean;
+}) {
   return (
-    <article
-      className={`
-        group flex shrink-0 flex-col gap-6 rounded-2xl bg-white p-8 shadow-lg
-        transition-transform duration-300 hover:scale-105 hover:shadow-2xl
-        before:block before:h-1 before:w-12 before:rounded-r-full before:bg-[#FA7436]
-        ${mobile ? "snap-start w-80" : ""}
-      `}
+    <motion.article
+      initial={{ opacity: 0, translateY: 40 }}
+      whileInView={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      className={`flex shrink-0 flex-col rounded-xl bg-white shadow-[0_6px_24px_rgba(0,0,0,0.05)] ${
+        mobile ? "snap-start w-80 p-8" : "p-10"
+      }`}
+      style={{ minHeight: 240 }}
     >
-      <div className="flex items-center gap-2 text-[#FA7436] font-semibold">
-        <CommentOutlined />
-        Review
-      </div>
+      {/* Testimonial text */}
+      <p className="text-[15px] leading-relaxed text-[#444] mb-8">{r.text}</p>
 
-      <p className="min-h-[96px] text-sm leading-relaxed text-[#444]">
-        {r.text}
-      </p>
-
-      <div className="flex items-center gap-3">
+      {/* Author block */}
+      <div className="flex items-start gap-4 mt-auto">
         <Image
           src={r.avatar}
           alt={r.author}
-          width={48}
-          height={48}
-          className="h-12 w-12 rounded-full object-cover"
+          width={56}
+          height={56}
+          unoptimized
+          className="h-14 w-14 rounded-full object-cover"
         />
         <div>
-          <p className="font-medium text-[#222]">{r.author}</p>
-          <Stars n={r.rating} />
+          <p className="font-semibold text-[#222] mb-1">{r.author}</p>
+          <StarRow n={r.rating} />
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
-function Stars({ n }: { n: number }) {
+/* ────────────────────── Stars ────────────────────── */
+function StarRow({ n }: { n: number }) {
   return (
     <div className="flex">
       {Array.from({ length: 5 }).map((_, i) => (
         <StarFilled
           key={i}
-          className={i < n ? "text-[#FFBF00]" : "text-[#E5E5E5]"}
+          style={{ color: i < n ? ACCENT : "#d1d5db", marginRight: 2 }} // gray-300 fallback
         />
       ))}
     </div>
