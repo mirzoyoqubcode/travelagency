@@ -1,11 +1,11 @@
 {
   "nav": {
-    "home": "HOME",
-    "about": "ABOUT US",
-    "packages": "TOUR PACKAGES",
-    "services": "OUR SERVICES",
-    "gallery": "GALLERY",
-    "contact": "CONTACT"
+    "home": "Home",
+    "about": "About us",
+    "packages": "Tour packages",
+    "services": "Our services",
+    "gallery": "Gallery",
+    "contact": "Contact"
   },
   "Services": {
     "title": "Our Services",
@@ -25,6 +25,19 @@
     "payment": {
       "title": "Secure payments",
       "desc": "Fast, protected checkout with multiple currency support."
+    }
+  },
+  "heroSection": {
+    "hero": {
+      "title": "See the World Differently.",
+      "highlight": "Adventure Awaits",
+      "subtitle": "From the golden dunes of Dubai to the silk roads of Samarkand, your next journey begins here. Let’s craft an experience you’ll never forget."
+    },
+    "company": {
+      "name": "Mir star travel agency",
+      "address": "Explorer ko‘chasi 123, Toshkent, O‘zbekiston",
+      "phone": "+998 90 123 4567",
+      "email": "rdmmirstar25@gmail.ru"
     }
   }
 }

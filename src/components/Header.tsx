@@ -67,7 +67,7 @@ const Header: React.FC = () => {
   /* ----------------------------- Render ----------------------------- */
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-      <div className="container mx-auto flex h-20 items-center justify-between px-6 lg:px-8">
+      <div className="container mx-auto flex h-20 items-center justify-between px-6 md:px-0">
         {/* ---------- Logo ---------- */}
         <Link href="/" className="flex items-center space-x-1">
           <span className="text-3xl font-extrabold tracking-tight text-[#222]">

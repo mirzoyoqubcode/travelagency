@@ -1,11 +1,11 @@
 {
   "nav": {
-    "home": "ГЛАВНАЯ",
-    "about": "О НАС",
-    "packages": "ТУР ПАКЕТЫ",
-    "services": "УСЛУГИ",
-    "gallery": "ГАЛЕРЕЯ",
-    "contact": "КОНТАКТЫ"
+    "home": "Главная",
+    "about": "О нас",
+    "packages": "Тур пакеты",
+    "services": "Услуги",
+    "gallery": "Галерея",
+    "contact": "Контакты"
   },
   "Services": {
     "title": "Наши услуги",
@@ -25,6 +25,19 @@
     "payment": {
       "title": "Безопасная оплата",
       "desc": "Быстрый и защищённый расчёт в нескольких валютах."
+    }
+  },
+  "heroSection": {
+    "hero": {
+      "title": "Увидьте мир иначе.",
+      "highlight": "Вперед к приключениям",
+      "subtitle": "От золотых дюн Дубая до шелковых дорог Самарканда ваше следующее путешествие начинается здесь. Давайте создадим опыт, который вы никогда не забудете."
+    },
+    "company": {
+      "name": "Mir star travel agency",
+      "address": "Explorer ko‘chasi 123, Toshkent, O‘zbekiston",
+      "phone": "+998 90 123 4567",
+      "email": "rdmmirstar25@gmail.ru"
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "nav": {
-    "home": "BOSH SAHIFA",
-    "about": "BIZ HAQIMIZDA",
-    "packages": "TUR PAKETLARI",
-    "services": "XIZMATLAR",
-    "gallery": "GALEREYA",
-    "contact": "ALOQA"
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "packages": "Tur paketlari",
+    "services": "Xizmatlar",
+    "gallery": "Galereya",
+    "contact": "Aloqa"
   },
   "Services": {
     "title": "Xizmatlarimiz",
@@ -25,6 +25,19 @@
     "payment": {
       "title": "Xavfsiz to‘lov",
       "desc": "Bir necha valyutada tez va himoyalangan to‘lov tizimi."
+    }
+  },
+  "heroSection": {
+    "hero": {
+      "title": "Dunyoni boshqacha kashf eting.",
+      "highlight": "Sarguzasht sizni kutmoqda",
+      "subtitle": "Dubayning oltin quymlari choʻllaridan Samarqandning ipak yoʻllarigacha, keyingi sayohatingiz shu yerda boshlanadi. Birgalikda unutilmas tajriba yarataylik."
+    },
+    "company": {
+      "name": "Mir star travel agency",
+      "address": "Explorer ko‘chasi 123, Toshkent, O‘zbekiston",
+      "phone": "+998 90 123 4567",
+      "email": "rdmmirstar25@gmail.ru"
     }
   }
 }

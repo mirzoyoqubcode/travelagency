@@ -1,67 +1,120 @@
 // components/HeroSection.tsx
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   FacebookFilled,
   TwitterOutlined,
   InstagramOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  EnvironmentOutlined,
 } from "@ant-design/icons";
+import { useTranslations } from "next-intl";
+
+const images = [
+  "https://www.agoda.com/wp-content/uploads/2024/04/Featured-image-Dubai-UAE-1244x700.jpg",
+  "https://www.besthouseturkey.com/wp-content/uploads/2023/10/istanbul.jpg",
+  "https://sondoongcave.info/wp-content/uploads/2022/03/vhl.png",
+  "https://d32ex7notsszg6.cloudfront.net/img/content/37415_Antalya%20in%20Turkey.jpg",
+  "https://imgcld.yatra.com/ytimages/image/upload/v1517482046/AdvNation/ANN_DES70/ann_bottom_Bali_ORIeFz.jpg",
+  "https://www.onthegotours.com/repository/Montenegro-846921716883743.jpg",
+  "https://www.gokite.travel/wp-content/uploads/2024/07/Discovering-the-Beauty-of-Baku-Top-Attractions-in-Azerbaijans-Capital.webp",
+  "https://aniq.uz/photos/news/td5TsdEfw41tK3i.png",
+  "https://trvlland.com/wp-content/uploads/2022/09/uzbekistan_tashkent-3-1024x663.jpg",
+];
 
 export default function HeroSection() {
+  const t = useTranslations("heroSection");
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIdx((i) => (i + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative isolate w-full h-screen overflow-hidden bottom-10">
-      {/* BG YouTube Embed (autoplay, loop, muted) */}
-      <div className="absolute inset-0 -z-10">
-        <iframe
-          className="w-full h-full object-cover"
-          src="https://www.youtube.com/embed/KTcxTUWnLIw?autoplay=1&mute=1&loop=1&playlist=KTcxTUWnLIw&controls=0&modestbranding=1&showinfo=0"
-          title="Hero Background"
-          allow="autoplay; fullscreen"
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Carousel Background */}
+      {images.map((src, i) => (
+        <img
+          key={i}
+          src={src}
+          alt=""
+          className={`
+            absolute inset-0 object-cover w-full h-full
+            transition-opacity duration-1000 ease-in-out
+            ${i === idx ? "opacity-100" : "opacity-0"}
+          `}
         />
-      </div>
-      <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
+      ))}
 
-      {/* HERO COPY */}
-      <div className="relative z-10 flex h-full w-full items-center justify-center px-6 lg:px-8">
-        <div className="relative flex max-w-4xl flex-col items-center text-center gap-6 lg:gap-8">
-          {/* radial halo */}
-          <div className="-z-10 pointer-events-none absolute inset-0 flex items-center justify-center">
-            <div className="h-72 w-72 rounded-full bg-black/40 blur-[110px]" />
-          </div>
+      {/* Overlay for contrast */}
+      <div className="absolute inset-0 bg-black/20" />
 
-          <h1 className="relative text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-white">
-            It’s a Big World Out&nbsp;There,&nbsp;
-            <span className="inline-block whitespace-nowrap text-[#FA7436]">
-              Go&nbsp;Explore
-            </span>
+      {/* Main content */}
+      <div className="relative z-10 flex container px-6 md:px-0 h-full">
+        {/* Left: Motto */}
+        <div className="w-1/2 flex flex-col justify-center">
+          <h1 className="text-2xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+            {t("hero.title")}
+            <br />
+            <span className="text-[#FA7436]">{t("hero.highlight")}</span>
           </h1>
-
-          <p className="max-w-md text-base lg:text-lg text-gray-200">
-            Time-tracking software used by millions. A simple time tracker and
-            timesheet app that lets you track work hours across projects.
+          <p className="text-lg lg:text-xl text-gray-200">
+            {t("hero.subtitle")}
           </p>
         </div>
-      </div>
 
-      {/* SOCIAL RAIL (≥ xl) */}
-      <div className="absolute right-5 top-1/2 hidden -translate-y-1/2 flex-col items-center gap-6 xl:flex">
-        <span className="rotate-90 text-sm font-semibold tracking-widest text-[#FA7436]">
-          FOLLOW&nbsp;US
-        </span>
-        <span className="h-10 w-px bg-[#FA7436]" />
-        <div className="flex flex-col gap-4">
-          {[FacebookFilled, TwitterOutlined, InstagramOutlined].map(
-            (Icon, i) => (
+        {/* Right: Company Info */}
+        <div className="w-1/2 flex items-center justify-center px-8 lg:px-16">
+          <div className="bg-black/60 backdrop-blur-lg rounded-xl p-8 text-gray-100 max-w-sm space-y-6">
+            <h2 className="text-2xl font-semibold text-white">
+              {t("company.name")}
+            </h2>
+
+            <div className="flex items-center gap-3">
+              <EnvironmentOutlined className="text-xl text-[#FA7436]" />
+              <span>{t("company.address")}</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <PhoneOutlined className="text-xl text-[#FA7436]" />
               <a
-                key={i}
-                href="#"
-                className="text-white/90 transition-colors hover:text-[#FA7436] focus:text-[#FA7436] focus:outline-none"
+                href={`tel:${t("company.phone")}`}
+                className="hover:text-white transition"
               >
-                <Icon className="text-xl" />
+                {t("company.phone")}
               </a>
-            )
-          )}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <MailOutlined className="text-xl text-[#FA7436]" />
+              <a
+                href={`mailto:${t("company.email")}`}
+                className="hover:text-white transition"
+              >
+                {t("company.email")}
+              </a>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 pt-4 border-t border-gray-600">
+              {[FacebookFilled, TwitterOutlined, InstagramOutlined].map(
+                (Icon, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="text-white hover:text-[#FA7436] transition"
+                  >
+                    <Icon className="text-2xl" />
+                  </a>
+                )
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
