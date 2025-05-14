@@ -12,12 +12,6 @@ import {
 } from "@ant-design/icons";
 import { Link } from "@/i18n/navigation";
 
-const SOCIAL = [
-  { icon: <TwitterOutlined />, href: "https://twitter.com/" },
-  { icon: <InstagramOutlined />, href: "https://instagram.com/" },
-  { icon: <YoutubeOutlined />, href: "https://youtube.com/" },
-];
-
 export default function Footer() {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
@@ -67,7 +61,6 @@ export default function Footer() {
 
       {/* PDF Viewer Modal */}
       <Modal
-        className="p-0 h-[]"
         title={t("privacy")}
         visible={isPdfModalVisible}
         onCancel={() => setPdfModalVisible(false)}
