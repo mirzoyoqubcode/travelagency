@@ -1,9 +1,9 @@
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ["uz", "ru", "en"],
-
-  // Used when no locale matches
+  locales: ["uz", "ru", "en"] as const,
   defaultLocale: "uz",
 });
+
+// Re‑export the union type if you want strict typing elsewhere
+export type AppLocale = (typeof routing.locales)[number];
