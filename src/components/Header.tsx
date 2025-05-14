@@ -8,119 +8,113 @@ import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
 import { AnimatePresence, motion } from "framer-motion";
 import LangSwitcher from "@/components/LanguageSwitcher";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
-/** ----------------------------- Types ----------------------------- */
 interface NavItem {
   key: string; // translation key
-  href: string; // pathname or hash
+  href: string; // full href, including locale
 }
 
-/** ----------------------------- Component ----------------------------- */
 const Header: React.FC = () => {
-  /* ---- Next‑intl helpers ---- */
   const locale = useLocale();
   const t = useTranslations("nav");
-
-  /* ---- Router helpers ---- */
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  /* ---- State ---- */
+  // keep track of the hash so we can close on hash‐only navigation
   const [hash, setHash] = useState<string>("");
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+  // mobile menu open state
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  /* ---- Compute nav list once per locale ---- */
-  const NAV_ITEMS: NavItem[] = useMemo(
-    () => [
-      { key: "home", href: "/" },
-      { key: "about", href: "/#about" },
-      { key: "packages", href: "/#packages" },
-      { key: "services", href: "/#services" },
-      { key: "gallery", href: "/#gallery" },
-      { key: "contact", href: `/${locale}/contact` },
-    ],
-    [locale]
-  );
-
-  /* ---- Build current URL (path + query + hash) ---- */
-  const queryString = searchParams.toString() ? `?${searchParams}` : "";
-  const currentPath = `${pathname}${queryString}${hash}`;
-
-  /* ---- Keep local hash state in sync ---- */
-  useEffect(() => {
-    const updateHash = () => setHash(window.location.hash);
-    updateHash(); // initial
-    window.addEventListener("hashchange", updateHash);
-    return () => window.removeEventListener("hashchange", updateHash);
-  }, []);
-
-  /* ---- Handlers ---- */
-  const toggleMobile = useCallback(() => setMobileOpen((v) => !v), []);
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+  const toggleMobile = useCallback(() => setMobileOpen((open) => !open), []);
 
-  /* Close mobile menu on route change */
+  // update hash and auto‐close mobile menu on hash change
+  useEffect(() => {
+    const handleHashChange = () => {
+      setHash(window.location.hash);
+      closeMobile();
+    };
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [closeMobile]);
+
+  // also close on any full route change
   useEffect(() => {
     closeMobile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname, closeMobile]);
 
-  /* ----------------------------- Render ----------------------------- */
+  // the six nav items
+  const NAV_ITEMS: NavItem[] = useMemo(
+    () => [
+      { key: "home", href: `/` },
+      { key: "about", href: `/#about` },
+      { key: "packages", href: `/#packages` },
+      { key: "services", href: `/#services` },
+      {
+        key: "hotels",
+        href: "https://ru.trip.com/?Allianceid=4228813&SID=45115078&trip_sub1=&trip_sub3=D152798&gad_source=1&gad_campaignid=21008476942&gbraid=0AAAAAqeUTtiiO0P5G6c9DK00sGLN70O2E&gclid=EAIaIQobChMIivukxrSijQMVQQqiAx1SdSlcEAAYASAAEgLAxfD_BwE&locale=ru-ru",
+      },
+      { key: "contact", href: `/contact` },
+    ],
+    []
+  );
+
+  // include any query string and hash to detect the active link
+  const qs = searchParams.toString() ? `?${searchParams}` : "";
+  const currentPath = `${pathname}${qs}${hash}`;
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-      <div className="container mx-auto flex h-20 items-center justify-between px-6 md:px-0">
-        {/* ---------- Logo ---------- */}
-        <Link href="/" className="flex items-center space-x-1">
-          <span className="text-3xl font-extrabold tracking-tight text-[#222]">
-            MirStar
-          </span>
-          <span className="text-3xl font-extrabold tracking-tight text-[#FA7436]">
-            Travel
-          </span>
-        </Link>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 bg-white/50 backdrop-blur-md shadow-sm">
+        <div className="container mx-auto flex h-24 items-center justify-between px-4 xl:px-0">
+          {/* Logo */}
+          <Link href={`/`} className="flex items-center space-x-1">
+            <Image src="/logo.png" alt="Logo" width={80} height={60} />
+          </Link>
 
-        {/* ---------- Desktop Nav ---------- */}
-        <nav className="hidden md:flex space-x-6">
-          {NAV_ITEMS.map(({ key, href }) => {
-            const isActive =
-              currentPath === href || currentPath.startsWith(`${href}/`);
-            return (
-              <Link
-                key={key}
-                href={href}
-                className="relative group px-1 py-2 font-medium text-[#222] transition-colors hover:text-[#FA7436]"
-              >
-                {t(key)}
-                {/* underline */}
-                <span
-                  className={`absolute left-0 -bottom-0.5 h-[2px] bg-[#FA7436] transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
-              </Link>
-            );
-          })}
-        </nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex space-x-6">
+            {NAV_ITEMS.map(({ key, href }) => {
+              const isActive =
+                currentPath === href || currentPath.startsWith(`${href}/`);
+              return (
+                <Link
+                  key={key}
+                  href={href}
+                  className="relative group px-1 py-2 font-medium text-[#222] transition-colors hover:text-[#FA7436]"
+                >
+                  {t(key)}
+                  <span
+                    className={`absolute left-0 -bottom-0.5 h-[2px] bg-[#FA7436] transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* ---------- Right controls ---------- */}
-        <div className="flex items-center gap-4">
-          <LangSwitcher locale={locale} />
-
-          {/* Mobile toggle */}
-          <button
-            onClick={toggleMobile}
-            className="md:hidden rounded-full p-2 bg-white shadow focus:outline-none focus:ring-2 focus:ring-[#FA7436] hover:bg-gray-100"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? (
-              <CloseOutlined className="text-xl text-[#222]" />
-            ) : (
-              <MenuOutlined className="text-xl text-[#222]" />
-            )}
-          </button>
+          {/* Right Controls */}
+          <div className="flex items-center gap-4">
+            <LangSwitcher locale={locale} />
+            <button
+              onClick={toggleMobile}
+              className="md:hidden  p-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#FA7436] hover:bg-gray-100"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileOpen ? (
+                <CloseOutlined className="text-xl text-[#222]" />
+              ) : (
+                <MenuOutlined className="text-xl text-[#222]" />
+              )}
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* ---------- Mobile Nav ---------- */}
+      {/* Mobile Nav */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -133,12 +127,14 @@ const Header: React.FC = () => {
           >
             <motion.aside
               key="panel"
-              className="absolute right-0 top-0 h-full w-72 bg-white shadow-xl p-6 flex flex-col"
+              className="absolute top-0 right-0 z-50 h-full w-72 bg-white shadow-xl p-6 flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
             >
               <nav className="mt-4 flex flex-col gap-3 flex-1">
                 {NAV_ITEMS.map(({ key, href }) => {
@@ -146,10 +142,10 @@ const Header: React.FC = () => {
                     currentPath === href || currentPath.startsWith(`${href}/`);
                   return (
                     <Link
-                      key={key}
                       href={href}
+                      key={key}
                       onClick={closeMobile}
-                      className={`rounded-lg px-4 py-3 font-medium transition-colors ${
+                      className={`block rounded-lg px-4 py-3 font-medium transition-colors ${
                         isActive
                           ? "bg-[#FEF9F6] text-[#FA7436]"
                           : "text-[#222] hover:bg-[#F7F8FC]"
@@ -167,7 +163,7 @@ const Header: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 

@@ -1,12 +1,12 @@
 // components/TestimonialsSection.tsx
 "use client";
 
+import React, { useState, useCallback } from "react";
 import Image from "next/image";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { StarFilled } from "@ant-design/icons";
+import { useTranslations } from "next-intl";
 
-/* ──────────────── Types ──────────────── */
 interface Review {
   id: number;
   text: string;
@@ -15,44 +15,27 @@ interface Review {
   rating: number;
 }
 
-/* ──────────────── Mock data ──────────────── */
-const reviews: Review[] = [
-  {
-    id: 1,
-    text: "Wow, what a fun vacation with Ocielien – guided by professional people.",
-    author: "Benjamin Robert",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    rating: 5,
-  },
-  {
-    id: 2,
-    text: "Amazing experience in a new place, thank you Ocielien!",
-    author: "Annette Block",
-    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-    rating: 4,
-  },
-  {
-    id: 3,
-    text: "I was hesitant at first, but the friendly guides changed my mind completely.",
-    author: "Kathryn Murphy",
-    avatar: "https://randomuser.me/api/portraits/women/12.jpg",
-    rating: 5,
-  },
-  {
-    id: 4,
-    text: "New story in my life – really amazing and very affordable.",
-    author: "Guy Hawkins",
-    avatar: "https://randomuser.me/api/portraits/men/44.jpg",
-    rating: 4,
-  },
-];
-
-const ACCENT = "#FA7436";
-
-/* ──────────────── Section ──────────────── */
 export default function TestimonialsSection() {
-  // simple state for mobile carousel dot indicator
+  const t = useTranslations("testimonialsSection");
+  // Pull in the array of reviews from our locale file
+  const reviews = t.raw
+    ? (t.raw("reviews") as Review[])
+    : (t("reviews") as unknown as Review[]);
+
+  // State for the mobile carousel indicator
   const [activeIdx, setActiveIdx] = useState(0);
+
+  // onScroll handler to update activeIdx
+  const onScroll = useCallback(
+    (e: React.UIEvent<HTMLDivElement>) => {
+      const el = e.currentTarget;
+      // width of one card (including margin)
+      const cardWidth = el.scrollWidth / reviews.length;
+      const idx = Math.round(el.scrollLeft / cardWidth);
+      setActiveIdx(idx);
+    },
+    [reviews.length]
+  );
 
   return (
     <section className="py-24 lg:py-32 bg-white">
@@ -60,47 +43,38 @@ export default function TestimonialsSection() {
         {/* Heading */}
         <header className="mb-16 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#222]">
-            Contact us to review&nbsp;
-            <span style={{ color: ACCENT }}>your experience</span>&nbsp;with us
+            {t("heading")}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-[#666]">
-            Give us feedback and let us know what experiences you had while on
-            vacation with us.
+            {t("subheading")}
           </p>
         </header>
 
-        {/* ---------- DESKTOP GRID ---------- */}
+        {/* Desktop grid */}
         <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
           {reviews.map((r, i) => (
             <TestimonialCard key={r.id} r={r} index={i} />
           ))}
         </div>
 
-        {/* ---------- MOBILE HORIZONTAL SCROLL ---------- */}
+        {/* Mobile horizontal scroll */}
         <div
           className="lg:hidden flex gap-6 overflow-x-auto snap-x snap-mandatory px-1"
-          onScroll={(e) => {
-            const el = e.currentTarget;
-            const idx = Math.round(
-              el.scrollLeft / (el.scrollWidth / reviews.length)
-            );
-            setActiveIdx(idx);
-          }}
+          onScroll={onScroll}
         >
           {reviews.map((r, i) => (
             <TestimonialCard key={r.id} r={r} index={i} mobile />
           ))}
         </div>
 
-        {/* mobile dots */}
+        {/* Mobile dots */}
         <div className="lg:hidden flex justify-center gap-2 mt-6">
           {reviews.map((_, i) => (
             <span
               key={i}
               className={`h-1.5 w-8 rounded-full transition-colors duration-300 ${
-                i === activeIdx ? "bg-[" + ACCENT + "]" : "bg-gray-300"
+                i === activeIdx ? "bg-[#FA7436]" : "bg-gray-300"
               }`}
-              style={{ backgroundColor: i === activeIdx ? ACCENT : undefined }}
             />
           ))}
         </div>
@@ -109,7 +83,6 @@ export default function TestimonialsSection() {
   );
 }
 
-/* ────────────────────── Card ────────────────────── */
 function TestimonialCard({
   r,
   index,
@@ -130,10 +103,8 @@ function TestimonialCard({
       }`}
       style={{ minHeight: 240 }}
     >
-      {/* Testimonial text */}
       <p className="text-[15px] leading-relaxed text-[#444] mb-8">{r.text}</p>
 
-      {/* Author block */}
       <div className="flex items-start gap-4 mt-auto">
         <Image
           src={r.avatar}
@@ -145,23 +116,19 @@ function TestimonialCard({
         />
         <div>
           <p className="font-semibold text-[#222] mb-1">{r.author}</p>
-          <StarRow n={r.rating} />
+          <div className="flex">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <StarFilled
+                key={i}
+                style={{
+                  color: i < r.rating ? "#FA7436" : "#d1d5db",
+                  marginRight: 2,
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </motion.article>
-  );
-}
-
-/* ────────────────────── Stars ────────────────────── */
-function StarRow({ n }: { n: number }) {
-  return (
-    <div className="flex">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <StarFilled
-          key={i}
-          style={{ color: i < n ? ACCENT : "#d1d5db", marginRight: 2 }} // gray-300 fallback
-        />
-      ))}
-    </div>
   );
 }

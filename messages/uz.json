@@ -4,7 +4,7 @@
     "about": "Biz haqimizda",
     "packages": "Tur paketlari",
     "services": "Xizmatlar",
-    "gallery": "Galereya",
+    "hotels": "Mehmonxonalar",
     "contact": "Aloqa"
   },
   "Services": {
@@ -28,16 +28,126 @@
     }
   },
   "heroSection": {
-    "hero": {
-      "title": "Dunyoni boshqacha kashf eting.",
-      "highlight": "Sarguzasht sizni kutmoqda",
-      "subtitle": "Dubayning oltin quymlari choʻllaridan Samarqandning ipak yoʻllarigacha, keyingi sayohatingiz shu yerda boshlanadi. Birgalikda unutilmas tajriba yarataylik."
-    },
+    "slides": [
+      {
+        "title": "Dunyoni boshqacha ko‘ring.",
+        "highlight": "Sarguzasht sizni kutmoqda",
+        "subtitle": "Dubayning oltin qum tepaliklaridan tortib, porlab turgan osmono‘par binolargacha bo‘lgan sayohatda hashamat va an’analarni uyg‘unligini his eting."
+      },
+      {
+        "title": "Qit’alar uchrashgan joy",
+        "highlight": "Tarix va zamonaviylik",
+        "subtitle": "Istanbul markazidagi qadimiy bozorlar va zamonaviy bulvarlarda sayr qiling."
+      },
+      {
+        "title": "Vyetnam g‘orlariga sayohat",
+        "highlight": "Yashirin mo‘jizalar",
+        "subtitle": "Son Duong g‘orining sehrli chuqurliklariga tushib, tabiatning yerto‘la mo‘jizalarini kashf eting."
+      },
+      {
+        "title": "Antaliyaning sohil boyliklari",
+        "highlight": "Quyosh va dengiz",
+        "subtitle": "Quyosh nurlari ostidagi plyajlarda, to‘q ko‘k suvlar va qadimiy qoldiqlar fonida hordiq oling."
+      },
+      {
+        "title": "Xudolar oroli",
+        "highlight": "Tropik zavq",
+        "subtitle": "Balining sichqon ekinlari, gurkirab turgan o‘rmonlari va sof manzarali sohillarda to‘la sho‘ng‘ing."
+      },
+      {
+        "title": "Buyuk Chernogoriya",
+        "highlight": "O‘zgarmagan go‘zallik",
+        "subtitle": "Adriatik qirg‘og‘ida kema sayohati qiling va o‘rta asr tepalik shaharchalarini kashf eting."
+      },
+      {
+        "title": "Boku olovlari",
+        "highlight": "Zamonaviylik va qadimiylik",
+        "subtitle": "Futuristik Olov minoralari qadimiy Ichari Shaharni soya ostiga olgan Boku poytaxtini kashf eting."
+      },
+      {
+        "title": "Ipak yo‘lining yuragi",
+        "highlight": "Abadiy an’analar",
+        "subtitle": "Xivaning devor bilan o‘ralgan shahrida aylanib yuring va moviy g‘ishtli masjidlarga qoyil qoling."
+      },
+      {
+        "title": "Toshkent: Madaniyatlar chorrahasi",
+        "highlight": "Shahar jozibasi",
+        "subtitle": "Jonli bozorlar, sovet davri me’morchiligi va zamonaviy o‘zbek mehmondo‘stligini his eting."
+      }
+    ],
     "company": {
-      "name": "Mir star travel agency",
-      "address": "Explorer ko‘chasi 123, Toshkent, O‘zbekiston",
-      "phone": "+998 90 123 4567",
+      "name": "Mir Star sayyohlik agentligi",
+      "address": "Toshkent shahri, Mirobod tumani, Mingo‘rik MFY, Amir Temur Shoh ko‘chasi, 15-uy",
+      "phone": "+99891 793 55 05",
       "email": "rdmmirstar25@gmail.ru"
     }
+  },
+  "aboutSection": {
+    "label": "Biz haqimizda",
+    "headline": "Eng yaxshi va eng ishonchli xizmat",
+    "description": "Mir Star Travel - butun dunyo bo‘ylab unutilmas sayohatlarni tashkil qilishda yordam beradigan sayyohlik agentligidir. Biz sayohatchilarning barcha toifalari uchun keng doiradagi turlarni taklif etamiz - ikki kishilik romantik sayohatlardan tortib, bolalar bilan oilaviy dam olishgacha. Bizning professionallar jamoasi sayohatingizning barcha tafsilotlari bilan shug‘ullanadi, chiptalar va mehmonxonalarni bron qilishdan tortib, individual marshrutlar va ekskursiyalarni ishlab chiqishgacha.\n\nXizmatlarimiz xavfsizligi va sifatini kafolatlash uchun biz faqat eng yaxshi turoperatorlar va aviakompaniyalar bilan hamkorlik qilamiz. Bundan tashqari, biz mijozlarimizga xizmat ko‘rsatish sifati va qulaylikni yo‘qotmasdan turlar uchun eng yaxshi narxlarni taklif qilishga intilamiz.",
+
+    "stats": {
+      "customers": { "value": "200+", "label": "Mijozlar va hamkorlar" },
+      "places": { "value": "500+", "label": "Dunyo boʻylab joylar" },
+      "journeys": { "value": "1k+", "label": "Muvaffaqiyatli sayohatlar" }
+    }
+  },
+  "testimonialsSection": {
+    "heading": "Tajribalaringizni biz bilan baham ko‘ring",
+    "subheading": "MirStar Travel bilan o‘tkazgan sayohatlaringiz haqidagi fikr-mulohazalaringizni eshitishni istaymiz.",
+    "reviews": [
+      {
+        "id": 1,
+        "text": "Kapadokiyaga safarim unutilmas bo‘ldi — issiq havodagi shar safari haqiqiy mo‘jiza edi!",
+        "author": "Anna Petrova",
+        "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "text": "Bizning oilamiz Ural tog‘lari turini juda yoqtirdi. Hammasi boshlanishidan oxirigacha muammosiz kechdi.",
+        "author": "Timur Saidov",
+        "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+        "rating": 4
+      },
+      {
+        "id": 3,
+        "text": "Venetsiya ko‘chalarini kashf etish — bu menga orzumni ro‘yobga chiqardi. MirStar Travel ni qat'iyan tavsiya qilaman!",
+        "author": "Marco Rossi",
+        "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+        "rating": 5
+      },
+      {
+        "id": 4,
+        "text": "Keniya safari juda zo‘r o‘tdi. Yo‘riqchilar professionallar va juda mehribon edilar.",
+        "author": "Emily Smith",
+        "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+        "rating": 4
+      }
+    ]
+  },
+  "footer": {
+    "contact": "Aloqa uchun",
+    "address": "Toshkent shahri, Mirobod tumani, Mingo‘rik MFY, Amir Temur Shoh ko‘chasi, 15-uy",
+    "phone": "+99891 793 55 05",
+    "email": "rdmmirstar25@gmail.ru",
+    "copyright": "© {year} Mir Star Travel Agency. Barcha huquqlar himoyalangan.",
+    "tos": "Foydalanish shartlari",
+    "privacy": "Maxfiylik siyosati"
+  },
+  "contactUs": {
+    "title": "<accent>Mira Travel Agency</accent> bilan bog‘laning",
+    "description": "Tur haqida, narxlar yoki boshqa savollaringiz bormi? Biz sizdan xabar kutamiz va 24 soat ichida javob beramiz.",
+    "address": "Toshkent shahri, Mirobod tumani, Mingo‘rik MFY, Amir Temur Shoh ko‘chasi, 15-uy",
+    "phone": "+99891 793 55 05",
+    "email": "rdmmirstar25@gmail.ru",
+    "labelName": "To‘liq ism",
+    "placeholderName": "Ismingiz",
+    "labelEmail": "Elektron pochta",
+    "placeholderEmail": "siz@example.com",
+    "labelMessage": "Xabar",
+    "placeholderMessage": "Nima kerakligini ayting…",
+    "button": "Xabar yuborish"
   }
 }

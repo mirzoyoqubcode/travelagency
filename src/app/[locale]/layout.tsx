@@ -13,8 +13,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Travel Agents",
-  description: "Travel Agents",
+  title: "Mir Travel Agency",
+  description: "Mir Travel Agency",
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -36,7 +36,7 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale }).catch(() => ({}));
 
   return (
-    <html lang={locale} className={`${dmSans.variable} h-full`}>
+    <html lang={locale} className={`${dmSans.variable} h-full scroll-smooth`}>
       <body className="min-h-screen bg-gray-50 font-sans antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />

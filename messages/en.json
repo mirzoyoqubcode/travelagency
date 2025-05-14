@@ -4,7 +4,7 @@
     "about": "About us",
     "packages": "Tour packages",
     "services": "Our services",
-    "gallery": "Gallery",
+    "hotels": "Hotels",
     "contact": "Contact"
   },
   "Services": {
@@ -28,16 +28,126 @@
     }
   },
   "heroSection": {
-    "hero": {
-      "title": "See the World Differently.",
-      "highlight": "Adventure Awaits",
-      "subtitle": "From the golden dunes of Dubai to the silk roads of Samarkand, your next journey begins here. Let’s craft an experience you’ll never forget."
-    },
+    "slides": [
+      {
+        "title": "See the World Differently.",
+        "highlight": "Adventure Awaits",
+        "subtitle": "From the golden dunes of Dubai to shimmering skyscrapers, experience luxury and tradition intertwined."
+      },
+      {
+        "title": "Where Continents Meet",
+        "highlight": "History & Modernity",
+        "subtitle": "Stroll ancient bazaars and modern avenues in the heart of Istanbul."
+      },
+      {
+        "title": "Into the Caves of Vietnam",
+        "highlight": "Hidden Wonders",
+        "subtitle": "Descend into Son Doong’s mystical depths and uncover nature’s subterranean marvels."
+      },
+      {
+        "title": "Coastal Gems of Antalya",
+        "highlight": "Sun & Sea",
+        "subtitle": "Relax on sun-kissed beaches framed by turquoise waters and ancient ruins."
+      },
+      {
+        "title": "Island of the Gods",
+        "highlight": "Tropical Bliss",
+        "subtitle": "Immerse yourself in Bali’s lush jungles, rice terraces, and pristine shores."
+      },
+      {
+        "title": "Majestic Montenegro",
+        "highlight": "Untouched Beauty",
+        "subtitle": "Cruise the Adriatic coast and meander through medieval hilltop towns."
+      },
+      {
+        "title": "Flames of Baku",
+        "highlight": "Modern Meets Ancient",
+        "subtitle": "Discover Azerbaijan’s capital, where futuristic Flame Towers shadow the Old City."
+      },
+      {
+        "title": "Heart of the Silk Road",
+        "highlight": "Timeless Traditions",
+        "subtitle": "Wander Khiva’s walled city and marvel at its azure-tiled mosques."
+      },
+      {
+        "title": "Tashkent: Crossroads of Cultures",
+        "highlight": "Urban Oasis",
+        "subtitle": "Experience vibrant bazaars, Soviet-era architecture, and modern Uzbek hospitality."
+      }
+    ],
     "company": {
       "name": "Mir star travel agency",
-      "address": "Explorer ko‘chasi 123, Toshkent, O‘zbekiston",
-      "phone": "+998 90 123 4567",
+      "address": "Tashkent City, Mirobod District, Mingorik MFY, Amir Temur Shah Street, House 15",
+      "phone": "+99891 793 55 05",
       "email": "rdmmirstar25@gmail.ru"
     }
+  },
+  "aboutSection": {
+    "label": "About us",
+    "headline": "The Best And Most Trusted Service",
+    "description": "Mir Star Travel is a travel agency that helps organize unforgettable trips around the world. We offer a wide range of tours for travelers of all categories—from romantic getaways for two to family vacations with children. Our professional team handles every detail of your journey, from booking flights and hotels to crafting customized itineraries and excursions.\n\nTo guarantee the safety and quality of our services, we partner only with the best tour operators and airlines. Additionally, we strive to offer our clients the best prices on tours without compromising on service quality and convenience.",
+
+    "stats": {
+      "customers": { "value": "200+", "label": "Customer & Partners" },
+      "places": { "value": "500+", "label": "Places In The World" },
+      "journeys": { "value": "1k+", "label": "Success Journeys" }
+    }
+  },
+  "testimonialsSection": {
+    "heading": "Share your experience with us",
+    "subheading": "We’d love your feedback on the adventures you’ve enjoyed with MirStar Travel.",
+    "reviews": [
+      {
+        "id": 1,
+        "text": "I had an unforgettable trip to Cappadocia — the hot air balloon ride was magical!",
+        "author": "Anna Petrova",
+        "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "text": "Our family loved the Ural Mountains tour. Everything was seamless from start to finish.",
+        "author": "Timur Saidov",
+        "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+        "rating": 4
+      },
+      {
+        "id": 3,
+        "text": "Exploring the streets of Venice was a dream come true. Highly recommend MirStar Travel!",
+        "author": "Marco Rossi",
+        "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+        "rating": 5
+      },
+      {
+        "id": 4,
+        "text": "The safari in Kenya was top-notch. The guides were professional and so friendly.",
+        "author": "Emily Smith",
+        "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+        "rating": 4
+      }
+    ]
+  },
+  "footer": {
+    "contact": "Contact",
+    "phone": "+998 90 123 4567",
+    "email": "rdmmirstar25@gmail.com",
+    "address": "Toshkent city, Mirabad district, Mingo’rik MFY, Amir Temur Shox street, house 15",
+    "copyright": "© {year} MirStar Travel Agency. All rights reserved.",
+    "tos": "Terms of Service",
+    "privacy": "Privacy Policy"
+  },
+  "contactUs": {
+    "title": "Contact <accent>Mira Travel Agency</accent>",
+    "description": "Have a question about a tour, pricing, or anything else? We’d love to hear from you. Send us a message and we’ll respond within 24 hours.",
+    "address": "",
+    "phone": "+998 71 123 45 67",
+    "email": "hello@miratravel.uz",
+    "labelName": "Full name",
+    "placeholderName": "Your name",
+    "labelEmail": "Email address",
+    "placeholderEmail": "you@example.com",
+    "labelMessage": "Message",
+    "placeholderMessage": "Tell us what you need…",
+    "button": "Send message"
   }
 }

@@ -1,8 +1,8 @@
 // components/LangSwitcher.tsx
 "use client";
 
-import React, { useTransition } from "react";
-import { Select, Skeleton } from "antd";
+import React from "react";
+import { Select } from "antd";
 import { CheckOutlined, GlobalOutlined } from "@ant-design/icons";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -15,7 +15,6 @@ const LANGS = [
 export default function LangSwitcher({ locale }: { locale: string }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
 
   const handleChange = (newLocale: string) => {
     const segments = pathname
@@ -23,22 +22,7 @@ export default function LangSwitcher({ locale }: { locale: string }) {
       .filter(Boolean)
       .filter((seg) => !LANGS.some((l) => l.code === seg));
     const nextPath = "/" + [newLocale, ...segments].join("/");
-    startTransition(() => router.replace(nextPath));
   };
-
-  if (isPending) {
-    return (
-      <Skeleton.Input
-        active
-        style={{
-          width: 140,
-          height: 40,
-          borderRadius: 8,
-          backgroundColor: "#E5E5E5", // skeleton token
-        }}
-      />
-    );
-  }
 
   return (
     <Select
@@ -47,7 +31,7 @@ export default function LangSwitcher({ locale }: { locale: string }) {
       size="middle"
       optionLabelProp="label"
       style={{
-        width: 140,
+        width: 100,
         height: 40,
         backgroundColor: "#FEFCFB", // background token
         border: "1px solid #E5E5E5", // icon-token as border

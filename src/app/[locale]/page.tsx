@@ -2,7 +2,7 @@ import AboutSection from "@/components/AboutSection";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import ToursGrid from "@/components/ToursGrid";
+import ToursGrid from "@/components/Tour/ToursGrid";
 
 export default function Home() {
   return (

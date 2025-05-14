@@ -9,6 +9,7 @@ import {
   EnvironmentOutlined,
   CreditCardOutlined,
 } from "@ant-design/icons";
+import { Link } from "@/i18n/navigation";
 
 const ACCENT = "#FA7436";
 
@@ -29,28 +30,29 @@ export default function ServicesSection() {
           {t("title")}
         </h2>
         <p className="mx-auto mb-12 max-w-2xl text-[#555]">{t("subtitle")}</p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {services.map(({ icon, key }) => (
-            <div
-              key={key}
-              className="flex flex-col items-center text-center gap-4 p-6 bg-white rounded-xl shadow-[0_6px_24px_rgba(0,0,0,0.05)] hover:shadow-lg transition"
-            >
-              <span
-                className="flex items-center justify-center w-16 h-16 rounded-full text-2xl"
-                style={{ backgroundColor: ACCENT + "22", color: ACCENT }}
+        <Link href="/services">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            {services.map(({ icon, key }) => (
+              <div
+                key={key}
+                className="flex flex-col items-center text-center gap-4 p-6 bg-white rounded-xl shadow-[0_6px_24px_rgba(0,0,0,0.05)] hover:shadow-lg transition"
               >
-                {icon}
-              </span>
-              <h3 className="text-lg font-semibold text-[#222]">
-                {t(`${key}.title`)}
-              </h3>
-              <p className="text-sm text-[#555] leading-relaxed">
-                {t(`${key}.desc`)}
-              </p>
-            </div>
-          ))}
-        </div>
+                <span
+                  className="flex items-center justify-center w-16 h-16 rounded-full text-2xl"
+                  style={{ backgroundColor: ACCENT + "22", color: ACCENT }}
+                >
+                  {icon}
+                </span>
+                <h3 className="text-lg font-semibold text-[#222]">
+                  {t(`${key}.title`)}
+                </h3>
+                <p className="text-sm text-[#555] leading-relaxed">
+                  {t(`${key}.desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Link>
       </div>
     </section>
   );
