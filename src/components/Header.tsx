@@ -127,7 +127,7 @@ const Header: React.FC = () => {
           >
             <motion.aside
               key="panel"
-              className="absolute top-0 right-0 z-50 h-full w-72 bg-white shadow-xl p-6 flex flex-col"
+              className="absolute top-0 pt-25 right-0 z-50 h-full w-72 bg-white shadow-xl p-6 flex flex-col items-center justify-center"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
