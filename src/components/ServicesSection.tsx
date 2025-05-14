@@ -30,7 +30,7 @@ export default function ServicesSection() {
           {t("title")}
         </h2>
         <p className="mx-auto mb-12 max-w-2xl text-[#555]">{t("subtitle")}</p>
-        <Link href="/services">
+        <Link href="https://ru.trip.com/?Allianceid=4228813&SID=45115078&trip_sub1=&trip_sub3=D152798&gad_source=1&gad_campaignid=21008476942&gbraid=0AAAAAqeUTtiiO0P5G6c9DK00sGLN70O2E&gclid=EAIaIQobChMIivukxrSijQMVQQqiAx1SdSlcEAAYASAAEgLAxfD_BwE&locale=ru-ru">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {services.map(({ icon, key }) => (
               <div
