@@ -95,7 +95,7 @@
   },
   "testimonialsSection": {
     "heading": "Tajribalaringizni biz bilan baham ko‘ring",
-    "subheading": "MirStar Travel bilan o‘tkazgan sayohatlaringiz haqidagi fikr-mulohazalaringizni eshitishni istaymiz.",
+    "subheading": "Mir Star Travel bilan o‘tkazgan sayohatlaringiz haqidagi fikr-mulohazalaringizni eshitishni istaymiz.",
     "reviews": [
       {
         "id": 1,
@@ -149,5 +149,38 @@
     "labelMessage": "Xabar",
     "placeholderMessage": "Nima kerakligini ayting…",
     "button": "Xabar yuborish"
+  },
+  "PopularDestinations": {
+    "title": "Mashhur yo‘nalishlar",
+    "subtitle": "Eng mashhur va sevimli sayohat yo‘nalishlari",
+    "uae": {
+      "name": "BAA",
+      "desc": "Dubayning hashamatli mehmonxonalari va zamonaviy arxitekturasi"
+    },
+    "turkey": {
+      "name": "Turkiya",
+      "desc": "Kappadokiya va Istanbulning tarixiy joylari"
+    },
+    "thailand": {
+      "name": "Tailand",
+      "desc": "Tropik plyajlar va Bangkokning hayratlanarli ibodatxonasi"
+    },
+    "vietnam": {
+      "name": "Vyetnam",
+      "desc": "Xalong bo‘yi va Xanoyning madaniy merosi"
+    },
+    "sharm": {
+      "name": "Sharm-al-Shoayx",
+      "desc": "Qizil dengiz va suvosti mo‘jizalari"
+    },
+    "georgia": { "name": "Gruziya", "desc": "Tog‘lar va qadimiy cherkovlar" },
+    "showMore": "Ko‘proq ko‘rsatish",
+    "learnMore": "Batafsil"
+  },
+  "Consultation": {
+    "title": "Bepul maslahat",
+    "description": "Savollaringiz bormi yoki shaxsiy sayohat bo‘yicha maslahat kerakmi? Bizning maslahatchimiz bilan Telegram orqali bevosita bog‘laning.",
+    "button": "Telegramda maslahat olish",
+    "telegramLink": "https://t.me/YourTelegramUsername"
   }
 }

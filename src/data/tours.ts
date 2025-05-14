@@ -1,7 +1,4 @@
-/**
- *  data/tours.ts
- *  – static catalogue: 10 tours for each of your 9 countries
- */
+// data/tours.ts
 
 export type TourTab = "special" | "popular" | "recommended" | "best";
 
@@ -12,11 +9,11 @@ export interface Tour {
   duration: string;
   price: number; // USD per package
   rating: number; // 0–5, one decimal
-  img: string; // 800×533 seeded placeholder
+  img: string; // path under /public/images/tours/
   tab: TourTab;
 }
 
-// exactly your list:
+// your 9 countries
 const countries = [
   "Dubai",
   "Turkey",
@@ -29,24 +26,27 @@ const countries = [
   "Uzbekistan",
 ];
 
-// cycle through these tabs
+// the four tabs
 const tabs: TourTab[] = ["special", "popular", "recommended", "best"];
 
-// build 10 random‐ish tours per country
+// build 10 tours per country,
+// id & img path match so you just drop files in public/images/tours/
 export const tours: Tour[] = countries.flatMap((country) =>
   Array.from({ length: 10 }, (_, i) => {
     const idx = i + 1;
+    const slug = country.toLowerCase().replace(/\s+/g, "-"); // e.g. "dubai"
+    const id = `${slug}-${idx}`; // e.g. "dubai-1"
+
     return {
-      id: `${country.toLowerCase().replace(/\s+/g, "-")}-${idx}`,
+      id,
       country,
       title: `${country} Discover ${idx}`,
-      duration: `${3 + (i % 5)} days • ${2 + (i % 3)} people`, // 3–7 days, 2–4 ppl
-      price: 150 + i * 40 + country.length * 3, // varied price
-      rating: +(4 + Math.random() * 1).toFixed(1), // 4.0–5.0
+      duration: `${3 + (i % 5)} days • ${2 + (i % 3)} people`,
+      price: 150 + i * 40 + country.length * 3,
+      rating: +(4 + Math.random() * 1).toFixed(1),
       tab: tabs[(i + countries.indexOf(country)) % tabs.length],
-      img: `https://picsum.photos/seed/${country
-        .toLowerCase()
-        .replace(/\s+/g, "-")}-${idx}/800/533`,
+      // local image; Next.js Image will serve /public/images/tours/<id>.jpg
+      img: `/images/tours/${id}.jpg`,
     };
   })
 );

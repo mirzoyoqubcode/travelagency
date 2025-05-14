@@ -18,6 +18,7 @@ const TourCard = React.memo(({ tour }: { tour: Tour }) => (
         alt={tour.title}
         width={400}
         height={260}
+        loading="lazy"
         className="h-48 w-full rounded-t-lg object-cover"
         priority={false}
       />

@@ -149,5 +149,38 @@
     "labelMessage": "Message",
     "placeholderMessage": "Tell us what you need…",
     "button": "Send message"
+  },
+  "PopularDestinations": {
+    "title": "Popular Destinations",
+    "subtitle": "The most popular and beloved travel destinations",
+    "uae": {
+      "name": "UAE",
+      "desc": "Luxurious hotels and modern architecture of Dubai"
+    },
+    "turkey": {
+      "name": "Turkey",
+      "desc": "Historical sites of Cappadocia and Istanbul"
+    },
+    "thailand": {
+      "name": "Thailand",
+      "desc": "Tropical beaches and stunning temples of Bangkok"
+    },
+    "vietnam": {
+      "name": "Vietnam",
+      "desc": "Halong Bay and the cultural heritage of Hanoi"
+    },
+    "sharm": {
+      "name": "Sharm el-Sheikh",
+      "desc": "The Red Sea and underwater wonders"
+    },
+    "georgia": { "name": "Georgia", "desc": "Mountains and ancient churches" },
+    "showMore": "Show More",
+    "learnMore": "Learn More"
+  },
+  "Consultation": {
+    "title": "Free Consultation",
+    "description": "Have questions or need personalized travel advice? Chat directly with our consultant via Telegram.",
+    "button": "Consult via Telegram",
+    "telegramLink": "https://t.me/YourTelegramUsername"
   }
 }
