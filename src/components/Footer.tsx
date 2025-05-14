@@ -5,11 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Modal } from "antd";
 import { useTranslations } from "next-intl";
-import {
-  TwitterOutlined,
-  InstagramOutlined,
-  YoutubeOutlined,
-} from "@ant-design/icons";
+
 import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
