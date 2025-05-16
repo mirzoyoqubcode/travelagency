@@ -17,50 +17,35 @@ const dmSans = DM_Sans({
 const baseUrl = "https://mirstartravel.uz"; // ← Замените на ваш реальный домен
 
 export const metadata: Metadata = {
-  title: "Mir Star Sayohat Agentligi — Unutilmas Sarguzashtlar",
+  title: "Mir Star Travel Agency — Unforgettable Adventures",
   description:
-    "Mir Star Sayohat Agentligi: Tanlangan global turlar, qulay narxlar va shaxsiylashtirilgan xizmatlar bilan unutilmas sayohat reja qiling!",
-  keywords: [
-    "sayohat",
-    "turlar",
-    "ta’til",
-    "sayyohlik agentligi",
-    "bron qilish",
-    "chegirmalar",
-  ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  } as Viewport,
-
-  // Open Graph мета-теги для социальных сетей
-  openGraph: {
-    title: "Mir Star Sayohat Agentligi",
-    description:
-      "Tanlangan global turlar, qulay narxlar va shaxsiylashtirilgan sayohat paketlari.",
-    url: baseUrl,
-    siteName: "Mir Star Travel",
-    type: "website",
-    locale: "uz-UZ",
-    images: [
-      {
-        url: `/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Mir Star Sayohat Agentligi",
-      },
-    ],
+    "Book personalized global tours at great prices with Mir Star Travel Agency.",
+  // point search engines at your canonical URL
+  alternates: {
+    canonical: baseUrl,
   },
-
-  // Управление индексацией
+  // allow indexing + following
   robots: {
     index: true,
     follow: true,
   },
+  // simple Open Graph so shares look nice
+  openGraph: {
+    title: "Mir Star Travel Agency — Unforgettable Adventures",
+    description:
+      "Book personalized global tours at great prices with Mir Star Travel Agency.",
+    url: baseUrl,
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mir Star Travel Agency",
+      },
+    ],
+  },
 };
-
 interface LocaleLayoutProps {
   children: ReactNode;
   params: { locale: string };
