@@ -1,8 +1,10 @@
-import type { Metadata, Viewport } from "next";
+// app/[locale]/layout.tsx
+import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { DM_Sans } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -68,11 +70,15 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const { locale } = params;
-  const messages = await getMessages({ locale }).catch(() => ({}));
+  const messages = await getMessages({ locale: params.locale }).catch(
+    () => ({})
+  );
 
   return (
-    <html lang={locale} className={`${dmSans.variable} h-full scroll-smooth`}>
+    <html
+      lang={params.locale}
+      className={`${dmSans.variable} h-full scroll-smooth`}
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -94,7 +100,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-screen bg-gray-50 font-sans antialiased">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={params.locale} messages={messages}>
           <Header />
           <main>{children}</main>
           <Footer />
