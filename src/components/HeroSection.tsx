@@ -12,15 +12,32 @@ import {
 import { useTranslations } from "next-intl";
 
 const bgImages = [
-  "https://wallpapercat.com/w/full/0/6/9/274793-2560x1600-desktop-hd-dubai-background-image.jpg",
-  "https://pixelz.cc/wp-content/uploads/2023/09/blue-mosque-istanbul-turkey-uhd-4k-wallpaper.jpg",
-  "https://images2.alphacoders.com/878/878006.jpg",
-  "https://images.pexels.com/photos/3732500/pexels-photo-3732500.jpeg?cs=srgb&dl=pexels-erik-karits-2093459-3732500.jpg&fm=jpg",
-  "https://imgcld.yatra.com/ytimages/image/upload/v1517482046/AdvNation/ANN_DES70/ann_bottom_Bali_ORIeFz.jpg",
-  "https://www.onthegotours.com/repository/Montenegro-846921716883743.jpg",
-  "https://w0.peakpx.com/wallpaper/903/970/HD-wallpaper-baku-azerbaijan-baku-azerbaijan-cities-former-soviet-states.jpg",
-  "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c4/32/55.jpg",
-  "https://i0.wp.com/www.goldenterratravel.com/wp-content/uploads/2022/01/tashkent.jpg?fit=985%2C635&ssl=1",
+  // 0 – Dubai, UAE
+  "https://images.pexels.com/photos/2115367/pexels-photo-2115367.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 1 – Istanbul, Türkiye (Blue Mosque skyline)
+  "https://images.pexels.com/photos/32083976/pexels-photo-32083976.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 2 – Paradise Cave, Vietnam
+  "https://images.pexels.com/photos/20748540/pexels-photo-20748540.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 3 – Antalya coast, Türkiye
+  "https://images.pexels.com/photos/3732500/pexels-photo-3732500.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 4 – Bali sunset, Indonesia
+  "https://images.pexels.com/photos/2253821/pexels-photo-2253821.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 5 – Kotor Bay / Sveti Stefan, Montenegro
+  "https://images.pexels.com/photos/5668039/pexels-photo-5668039.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 6 – Baku Flame Towers, Azerbaijan
+  "https://images.pexels.com/photos/8412701/pexels-photo-8412701.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 7 – Zomin mountains, Uzbekistan
+  "https://images.pexels.com/photos/31966181/pexels-photo-31966181.jpeg?auto=compress&cs=tinysrgb&h=1200",
+
+  // 8 – Cappadocia hot-air balloons, Türkiye
+  "https://images.pexels.com/photos/3889704/pexels-photo-3889704.jpeg?auto=compress&cs=tinysrgb&h=1200",
 ];
 
 export default function HeroSection() {
@@ -53,6 +70,7 @@ export default function HeroSection() {
           key={i}
           src={slide.src}
           alt={slide.title}
+          loading="lazy"
           className={`absolute inset-0 object-cover w-full h-full transition-opacity duration-1000 ease-in-out ${
             i === idx ? "opacity-100" : "opacity-0"
           }`}

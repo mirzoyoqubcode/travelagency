@@ -182,5 +182,23 @@
     "description": "Savollaringiz bormi yoki shaxsiy sayohat bo‘yicha maslahat kerakmi? Bizning maslahatchimiz bilan Telegram orqali bevosita bog‘laning.",
     "button": "Telegramda maslahat olish",
     "telegramLink": "https://t.me/YourTelegramUsername"
+  },
+  "payment": {
+    "title": "To‘lov usullari",
+    "subtitle": "Quyidagi qulay usullardan birini tanlang",
+    "or": "yoki",
+    "secure": "Xavfsiz to‘lov",
+    "click": {
+      "title": "Click orqali to‘lov",
+      "alt": "Click QR-kodi",
+      "instructions": "Click orqali to‘lash uchun QR-kodni skan qiling",
+      "button": "Click ga o‘ting",
+      "link": "https://my.click.uz/services/pay?service_id=73301&merchant_id=40024"
+    },
+    "payme": {
+      "title": "Payme orqali to‘lov",
+      "button": "Payme ga o‘ting",
+      "link": "https://payme.uz/your-payme-payment-link"
+    }
   }
 }

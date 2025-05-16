@@ -7,6 +7,7 @@ import PopularDestinations from "@/components/PopularDestinations";
 import ServicesSection from "@/components/ServicesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ToursGrid from "@/components/Tour/ToursGrid";
+import PaymentMethods from "@/components/PaymentMethods";
 
 export const metadata: Metadata = {
   title: "Mir Star Sayohat Agentligi — Bosh Sahifa",
@@ -52,9 +53,11 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ToursGrid />
+      <PaymentMethods />
       <ServicesSection />
       <PopularDestinations />
       <TestimonialsSection />
+
       <Consultation />
     </div>
   );

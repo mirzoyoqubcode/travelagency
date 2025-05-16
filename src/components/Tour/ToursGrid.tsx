@@ -1,3 +1,4 @@
+// components/ToursGrid.tsx
 "use client";
 
 import React, { useMemo } from "react";
@@ -11,6 +12,7 @@ const TAB_TITLES: Record<TourTab, string> = {
   popular: "Popular",
   recommended: "Recommendation",
   best: "Best Price",
+  inner: "Inner Destinations", // ← new!
 };
 
 export default function ToursGrid() {
@@ -27,7 +29,7 @@ export default function ToursGrid() {
   return (
     <section className="my-4" id="packages">
       <div className="container mx-auto px-6">
-        <h2 className="mb-12 text-center text-3xl sm:text-4xl font-extrabold text-[#222222]">
+        <h2 className="mb-12 text-center text-3xl sm:text-4xl font-extrabold text-[#222]">
           The <span className="text-[#FA7436]">best place</span> for vacation
         </h2>
 

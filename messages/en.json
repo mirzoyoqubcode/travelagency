@@ -182,5 +182,23 @@
     "description": "Have questions or need personalized travel advice? Chat directly with our consultant via Telegram.",
     "button": "Consult via Telegram",
     "telegramLink": "https://t.me/YourTelegramUsername"
+  },
+  "payment": {
+    "title": "Payment Methods",
+    "subtitle": "Choose a convenient way to pay",
+    "or": "or",
+    "secure": "Secure payment",
+    "click": {
+      "title": "Pay with Click",
+      "alt": "Click QR code",
+      "instructions": "Scan the QR code to pay via Click",
+      "button": "Go to Click",
+      "link": "https://my.click.uz/services/pay?service_id=73301&merchant_id=40024"
+    },
+    "payme": {
+      "title": "Pay with Payme",
+      "button": "Go to Payme",
+      "link": "https://payme.uz/your-payme-payment-link"
+    }
   }
 }

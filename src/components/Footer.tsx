@@ -58,11 +58,11 @@ export default function Footer() {
       {/* PDF Viewer Modal */}
       <Modal
         title={t("privacy")}
-        visible={isPdfModalVisible}
+        open={isPdfModalVisible}
         onCancel={() => setPdfModalVisible(false)}
         footer={null}
         width={800}
-        bodyStyle={{ padding: 0, height: "80vh" }}
+        style={{ padding: 0, height: "80vh" }}
         destroyOnClose
       >
         <iframe

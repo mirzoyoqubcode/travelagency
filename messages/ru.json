@@ -183,5 +183,23 @@
     "description": "Есть вопросы или нужен персональный совет по путешествию? Общайтесь напрямую с нашим консультантом в Telegram.",
     "button": "Консультация в Telegram",
     "telegramLink": "https://t.me/YourTelegramUsername"
+  },
+  "payment": {
+    "title": "Способы оплаты",
+    "subtitle": "Выберите удобный способ",
+    "or": "или",
+    "secure": "Безопасный платёж",
+    "click": {
+      "title": "Оплата через Click",
+      "alt": "QR код Click",
+      "instructions": "Отсканируйте QR-код для оплаты через Click",
+      "button": "Перейти в Click",
+      "link": "https://my.click.uz/services/pay?service_id=73301&merchant_id=40024"
+    },
+    "payme": {
+      "title": "Оплата через Payme",
+      "button": "Перейти в Payme",
+      "link": "https://payme.uz/your-payme-payment-link"
+    }
   }
 }

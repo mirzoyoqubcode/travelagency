@@ -4,14 +4,13 @@ import Image from "next/image";
 import {
   EnvironmentOutlined,
   StarFilled,
-  ArrowRightOutlined,
+  CheckOutlined,
 } from "@ant-design/icons";
 import { Card } from "antd";
 import type { Tour } from "@/data/tours";
 
-const TourCard = React.memo(({ tour }: { tour: Tour }) => (
+const TourCard: React.FC<{ tour: Tour }> = React.memo(({ tour }) => (
   <Card
-    hoverable
     cover={
       <Image
         src={tour.img}
@@ -23,7 +22,7 @@ const TourCard = React.memo(({ tour }: { tour: Tour }) => (
         priority={false}
       />
     }
-    className="overflow-hidden rounded-xl border-0 shadow-sm"
+    className="overflow-hidden rounded-xl border-0"
   >
     {/* top row */}
     <div className="mb-2 flex items-center justify-between text-xs">
@@ -40,16 +39,17 @@ const TourCard = React.memo(({ tour }: { tour: Tour }) => (
     <h3 className="line-clamp-2 font-semibold text-[#222222]">{tour.title}</h3>
     <p className="mb-4 text-xs text-[#999999]">{tour.duration}</p>
 
-    <div className="flex items-center justify-between">
-      <span className="text-lg font-bold text-[#FA7436]">{tour.price}$</span>
-      <a
-        href="#"
-        className="flex items-center gap-1 text-xs font-medium text-[#999999] transition-colors hover:text-[#FA7436]"
-      >
-        View&nbsp;More <ArrowRightOutlined />
-      </a>
-    </div>
+    {/* includes list */}
+    <ul className="text-xs text-[#999999] space-y-1">
+      {tour.includes.map((item, idx) => (
+        <li key={idx} className="flex items-center gap-1">
+          <CheckOutlined className="text-[#FA7436]" />
+          {item}
+        </li>
+      ))}
+    </ul>
   </Card>
 ));
+
 TourCard.displayName = "TourCard";
 export default TourCard;
