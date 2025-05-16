@@ -1,3 +1,4 @@
+// app/[locale]/contact/page.tsx
 "use client";
 
 import {
@@ -6,25 +7,32 @@ import {
   EnvironmentOutlined,
 } from "@ant-design/icons";
 import { useTranslations } from "next-intl";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Aloqa – Mir Star Sayohat Agentligi",
+  description:
+    "Biz bilan bog‘laning: manzil, telefon raqam va elektron pochta.",
+};
 
 const ACCENT = "#FA7436";
 
-export default function ContactUs() {
+export default function ContactPage() {
   const t = useTranslations("contactUs");
 
   return (
     <section className="pt-40 pb-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2">
-        {/* ───────────── Left column – info ───────────── */}
+        {/* Left column – info */}
         <div className="space-y-8">
           <header className="space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#222]">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#222]">
               {t.rich("title", {
                 accent: (chunks) => (
                   <span style={{ color: ACCENT }}>{chunks}</span>
                 ),
               })}
-            </h2>
+            </h1>
             <p className="max-w-md text-[#555]">{t("description")}</p>
           </header>
 
@@ -44,7 +52,7 @@ export default function ContactUs() {
           </ul>
         </div>
 
-        {/* ───────────── Right column – form ───────────── */}
+        {/* Right column – form */}
         <form
           onSubmit={(e) => e.preventDefault()}
           className="space-y-6 bg-white p-10 rounded-xl shadow-[0_6px_24px_rgba(0,0,0,0.05)]"
@@ -56,6 +64,7 @@ export default function ContactUs() {
               </label>
               <input
                 id="name"
+                name="name"
                 type="text"
                 required
                 placeholder={t("placeholderName")}
@@ -71,6 +80,7 @@ export default function ContactUs() {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 required
                 placeholder={t("placeholderEmail")}
@@ -88,6 +98,7 @@ export default function ContactUs() {
             </label>
             <textarea
               id="message"
+              name="message"
               rows={4}
               required
               placeholder={t("placeholderMessage")}
