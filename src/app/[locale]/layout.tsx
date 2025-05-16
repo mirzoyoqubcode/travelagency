@@ -1,5 +1,5 @@
 // app/[locale]/layout.tsx
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { DM_Sans } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
