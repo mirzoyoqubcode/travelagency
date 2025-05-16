@@ -40,9 +40,9 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@YourTwitterHandle",
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
