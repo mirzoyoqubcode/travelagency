@@ -32,7 +32,13 @@ export default function Footer() {
             <h4 className="mb-4 font-semibold text-[#222]">{t("contact")}</h4>
             <p className="mb-2">{t("phone")}</p>
             <p className="mb-2">{t("email")}</p>
-            <p className="max-w-xs text-[#777]">{t("address")}</p>
+            <Link
+              href={
+                "https://maps.windows.com/?form=WNAMSH&collection=point.41.305464_69.279627_Point"
+              }
+            >
+              <p className="max-w-xs text-[#777]">{t("address")}</p>
+            </Link>
           </div>
         </div>
 

@@ -10,6 +10,7 @@ import {
   EnvironmentOutlined,
 } from "@ant-design/icons";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const bgImages = [
   // 0 – Dubai, UAE
@@ -100,13 +101,18 @@ export default function HeroSection() {
             <h2 className="text-xl sm:text-2xl font-semibold text-white">
               {t("company.name")}
             </h2>
-
-            <div className="flex items-center gap-2">
-              <EnvironmentOutlined className="text-lg sm:text-xl text-[#FA7436]" />
-              <span className="text-sm sm:text-base">
-                {t("company.address")}
-              </span>
-            </div>
+            <Link
+              href={
+                "https://maps.windows.com/?form=WNAMSH&collection=point.41.305464_69.279627_Point"
+              }
+            >
+              <div className="flex items-center gap-2">
+                <EnvironmentOutlined className="text-lg sm:text-xl text-[#FA7436]" />
+                <span className="text-sm sm:text-base">
+                  {t("company.address")}
+                </span>
+              </div>
+            </Link>
 
             <div className="flex items-center gap-2">
               <PhoneOutlined className="text-lg sm:text-xl text-[#FA7436]" />

@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import {
   MailOutlined,
   PhoneOutlined,
@@ -29,10 +30,15 @@ export default function ContactUs() {
           </header>
 
           <ul className="space-y-6 text-[#444] text-sm">
-            <li className="flex items-start gap-3">
+            <Link
+              href={
+                "https://maps.windows.com/?form=WNAMSH&collection=point.41.305464_69.279627_Point"
+              }
+              className="flex items-start gap-3"
+            >
               <EnvironmentOutlined style={{ color: ACCENT, fontSize: 20 }} />
               <span>{t("address")}</span>
-            </li>
+            </Link>
             <li className="flex items-start gap-3">
               <PhoneOutlined style={{ color: ACCENT, fontSize: 20 }} />
               <span>{t("phone")}</span>
