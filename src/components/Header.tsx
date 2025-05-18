@@ -68,10 +68,10 @@ const Header: React.FC = () => {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-white backdrop-blur-md shadow-sm">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 xl:px-0">
+        <div className="container mx-auto flex h-22 items-center justify-between px-4 xl:px-0">
           {/* Logo */}
           <Link href={`/`} className="flex items-center space-x-1">
-            <Image src="/logo.png" alt="Logo" width={100} height={80} />
+            <Image src="/logo.png" alt="Logo" width={150} height={110} />
           </Link>
 
           {/* Desktop Nav */}
