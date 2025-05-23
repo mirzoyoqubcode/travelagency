@@ -15,14 +15,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#F9F4F2] text-[#555] text-sm">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-0 py-12">
         {/* upper flex */}
         <div className="flex items-center justify-between gap-10">
           <Link href="/">
             <Image
               src="/logo.png"
               alt="MirStar Travel Logo"
-              width={120}
+              width={200}
               height={50}
             />
           </Link>
@@ -67,13 +67,19 @@ export default function Footer() {
         open={isPdfModalVisible}
         onCancel={() => setPdfModalVisible(false)}
         footer={null}
-        width={800}
-        style={{ padding: 0, height: "80vh" }}
+        width="100%"
+        style={{ top: 0, padding: 0 }}
+        bodyStyle={{ padding: 0, height: "calc(100vh - 39px)" }} // 55px for title bar
         destroyOnClose
       >
         <iframe
           src="/GUVOHNOMA.pdf"
-          style={{ width: "100%", height: "100%", border: "none" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            border: "none",
+            display: "block",
+          }}
           title="Privacy Policy"
         />
       </Modal>

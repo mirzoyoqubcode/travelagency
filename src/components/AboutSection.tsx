@@ -11,7 +11,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="bg-[#F7F8FC] py-12 md:py-20">
       <div className="container mx-auto px-4 xl:px-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 bg-white rounded-3xl p-8 md:p-12 lg:p-16 ">
           {/* Left image */}
           <div className="mx-auto w-full max-w-md">
             <Image
